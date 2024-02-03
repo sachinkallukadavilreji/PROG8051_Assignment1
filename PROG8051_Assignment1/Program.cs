@@ -66,32 +66,53 @@ namespace CSharpTutorials
 
             do
             {
-                Console.WriteLine("Main menu:\n1. Feed Buddy\n2.Play with Buddy\n3.Let Buddy Rest\n4.Check buddy's Status\n5.Exit");
+
+               
+
+                Console.WriteLine("Main menu:\n1. Feed Buddy\n2.Play with Buddy\n3.Let Buddy Rest\n4.Check buddy's Status\n5.Exit\n");
                 activityWithPet = Convert.ToInt32(Console.ReadLine());
                 Console.Write("\n");
 
                 switch (activityWithPet)
                 {
                     case 1:
-                        Console.WriteLine("You have fed " + petName + ".His hunger decreased, and health improves slighly. ");
+                        petHunger -= 4;
+                        petHealth += 2;
+                        Console.WriteLine("You have fed " + petName + ".His happiness decreased to " + petHunger + ", And his hunger is now at " + petHealth + ". ");
                         Console.Write("\n");
-                        petHunger -= 2;
-                        petHealth += 1;
+
+
+                        petHunger += 1;
+                        petHappiness -= 1;
+                        Console.WriteLine("One hour has passed!!  " + petName + "'s happiness decreased to " + petHunger + ", But his hunger is now at " + petHunger + ". ");
+                        Console.Write("\n");
+
                         break;
 
                     case 2:
-                        Console.WriteLine("You have played with " + petName + ".His happiness increased, But he is a bit hungrier. ");
-                        Console.Write("\n");
                         petHunger += 1;
                         petHappiness += 1;
+                        Console.WriteLine("You have played with " + petName + ".His happiness increased to " + petHappiness + ", But his hunger is now at " + petHunger + ". ");
+                        Console.Write("\n");
+
+                        petHunger += 1;
+                        petHappiness -= 1;
+                        Console.WriteLine("One hour has passed!!  " + petName + "'s happiness decreased to " + petHunger + ", But his hunger is now at " + petHunger + ". ");
+                        Console.Write("\n");
+
                         break;
 
                     case 3:
-
-                        Console.WriteLine(petName + " has rested .His health is improved, But he is a bit hungrier. ");
-                        Console.Write("\n");
                         petHealth += 2;
                         petHappiness -= 1;
+                        Console.WriteLine(petName + " has rested " + ".His health is not at " + petHealth + ", But his happiness is now at " + petHappiness + ". ");
+                        Console.Write("\n");
+
+                        petHunger += 1;
+                        petHappiness -= 1;
+                        Console.WriteLine("One hour has passed!!  " + petName + "'s happiness decreased to " + petHunger + ", But his hunger is now at " + petHunger + ". ");
+                        Console.Write("\n");
+
                         break;
 
                     case 4:
@@ -110,7 +131,7 @@ namespace CSharpTutorials
 
             } while (activityWithPet != 5);
 
-            Console.WriteLine("hello");
+
 
 
 
