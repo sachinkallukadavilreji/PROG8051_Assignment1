@@ -50,26 +50,27 @@ namespace CSharpTutorials
 
             } while (choice != 1 && choice != 2 && choice != 3);
 
+            /*            Accepting input from the user
+            */
+
             Console.WriteLine("You have chossen a " + petType + ". What would you like to name your pet");
             Console.Write("\n");
             Console.Write("User Input: ");
-            petName = (Console.ReadLine());
+            petName = Console.ReadLine();
             Console.Write("\n");
             Console.WriteLine("Welcome, " + petName + "! Lets take good care of him");
             Console.Write("\n");
 
-
-
-            /*            Console.WriteLine("Main menu:\n1. Feed Buddy\n2.Play with Buddy\n3.Let Buddy Rest\n4.Check buddy's Status\n5.Exit");
-                          activityWithPet=Convert.ToInt32(Console.ReadLine());
-            */
 
             do
             {
                 
                 if(petHunger >= 7 || petHealth <= 3 || petHappiness <= 3 )
                 {
-                    if(petHunger >= 7)
+                    /*            Verifying if the pet is ok. otherwise approprite message is displayed.
+                    */
+                    
+                    if (petHunger >= 7)
                     {
                         Console.WriteLine(petName + " is hungry feed him\n");
                         petHunger = 7;
@@ -87,12 +88,18 @@ namespace CSharpTutorials
       
                 }
 
+                /*           Displaying the main menu message
+                    */
+
                 Console.WriteLine("Main menu:\n1. Feed Buddy\n2.Play with Buddy\n3.Let Buddy Rest\n4.Check buddy's Status\n5.Exit\n\n");
                 activityWithPet = Convert.ToInt32(Console.ReadLine());
 
                 switch (activityWithPet)
                 {
                     case 1:
+
+                        /*            Feeding the ped
+                    */
 
                         petHunger = Math.Max (1 , petHunger -= 4);
                         petHealth = Math.Min(10, petHealth += 2);
@@ -102,11 +109,18 @@ namespace CSharpTutorials
 
                     case 2:
 
-                        if(petHunger >= 7)
+                        /*            When the pet hunger is greater than or equal to 7 the user cannot make the
+                                      play without feeding it more.
+                         */                                     
+
+                        if (petHunger >= 7)
                         {
                             Console.WriteLine("Feed the pet\n");
                             break;
                         }
+
+                        /*              Playing with the pet
+                        */
 
                         petHunger = Math.Max(10, petHunger -= 1);
                         petHappiness = Math.Min(10, petHappiness += 4);
@@ -114,6 +128,8 @@ namespace CSharpTutorials
                         break;
 
                     case 3:
+                        /*            Making the pet rest.
+                        */
 
                         petHealth = Math.Min(10, petHealth += 4);
                         petHappiness = Math.Max(1, petHappiness -= 1);
@@ -122,10 +138,15 @@ namespace CSharpTutorials
 
                     case 4:
 
+                        /*            Displaying the pet status to the user.
+                        */
+
                         Console.WriteLine(petName + "'s Status: \n - Hunger: " + petHunger + "\n - Happiness: " + petHappiness + "\n - Health: " + petHealth + "\n ");
                         break;
 
                     case 5:
+                        /*            Exit menu for the user to exit out of the loop.
+                        */
 
                         Console.WriteLine("Thank you for playing with " + petName + ".Goodbye! ");
                         return;
@@ -134,6 +155,9 @@ namespace CSharpTutorials
                         break;
 
                 }
+
+                /*            After every action one hour is passed and hunger and happniesi is changed.
+                */
 
                 petHunger = Math.Min(10, petHunger += 1);
                 petHappiness = Math.Max(1, petHappiness -= 1);
