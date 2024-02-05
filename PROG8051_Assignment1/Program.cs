@@ -71,91 +71,62 @@ namespace CSharpTutorials
                 {
                     if(petHunger >= 7)
                     {
-                        Console.WriteLine(petName + " is hungry feed him");
+                        Console.WriteLine(petName + " is hungry feed him\n");
                         petHunger = 7;
-                        Console.Write("\n");
                     }
                     if (petHealth <= 3)
                     {
-                        Console.WriteLine(petName + "is not healthy let him rest ");
+                        Console.WriteLine(petName + "is not healthy let him rest \n");
                         petHealth = 3;
-                        Console.Write("\n");
                     }
                     if (petHappiness <= 3)
                     {
-                        Console.WriteLine(petName + "is not happy play with him");
+                        Console.WriteLine(petName + "is not happy play with him\n");
                         petHappiness = 3;
-                        Console.Write("\n");
-                    }
-
-                    
+                    }                    
       
                 }
 
-                Console.WriteLine("Main menu:\n1. Feed Buddy\n2.Play with Buddy\n3.Let Buddy Rest\n4.Check buddy's Status\n5.Exit\n");
+                Console.WriteLine("Main menu:\n1. Feed Buddy\n2.Play with Buddy\n3.Let Buddy Rest\n4.Check buddy's Status\n5.Exit\n\n");
                 activityWithPet = Convert.ToInt32(Console.ReadLine());
-                Console.Write("\n");
 
                 switch (activityWithPet)
                 {
                     case 1:
-                        petHunger -= 4;
-                        petHealth += 2;
-                        Console.WriteLine("You have fed " + petName + ".His happiness is at " + petHappiness + ",his hunger is now at " + petHunger + " and his health is at  " + petHealth);
-                        Console.Write("\n");
 
-
-                        petHunger += 1;
-                        petHappiness -= 1;
-                        Console.WriteLine("One hour has passed!!  " + petName + "'s happiness decreased to " + petHunger + ", his hunger is now at " + petHunger + " and his health is at  " + petHealth);
-                        Console.Write("\n");
-
-
-
+                        petHunger = Math.Max (1 , petHunger -= 4);
+                        petHealth = Math.Min(10, petHealth += 2);
+                        
+                        Console.WriteLine(petName + "'s Status: \n - Hunger: " + petHunger + "\n - Happiness: " + petHappiness + "\n - Health: " + petHealth + "\n ");
                         break;
 
                     case 2:
+
                         if(petHunger >= 7)
                         {
-                            Console.WriteLine("Feed the pet");
+                            Console.WriteLine("Feed the pet\n");
                             break;
                         }
 
-                        petHunger += 1;
-                        petHappiness += 4;
-                        Console.WriteLine(petName + "'s Status: \n - Hunger: " + petHunger + "\n - Happiness: " + petHappiness + "\n - Health: " + petHealth);
-                        Console.Write("\n");
-
-                        petHunger += 1;
-                        petHappiness -= 1;
-                        Console.WriteLine("One hour has passed!!  ");
-                        Console.WriteLine(petName + "'s Status: \n - Hunger: " + petHunger + "\n - Happiness: " + petHappiness + "\n - Health: " + petHealth);
-                        Console.Write("\n");
-
+                        petHunger = Math.Max(10, petHunger -= 1);
+                        petHappiness = Math.Min(10, petHappiness += 4);
+                        Console.WriteLine(petName + "'s Status: \n - Hunger: " + petHunger + "\n - Happiness: " + petHappiness + "\n - Health: " + petHealth + "\n ");
                         break;
 
                     case 3:
-                        petHealth +=4 ;
-                        petHappiness -= 1;
-                        Console.WriteLine(petName + "'s Status: \n - Hunger: " + petHunger + "\n - Happiness: " + petHappiness + "\n - Health: " + petHealth);
-                        Console.Write("\n");
-                        
 
-                        petHunger += 1;
-                        petHappiness -= 1;
-                        Console.WriteLine("One hour has passed!!  ");
-                        Console.WriteLine(petName + "'s Status: \n - Hunger: " + petHunger + "\n - Happiness: " + petHappiness + "\n - Health: " + petHealth);
-                        Console.Write("\n");
-
-
+                        petHealth = Math.Min(10, petHealth += 4);
+                        petHappiness = Math.Max(1, petHappiness -= 1);
+                        Console.WriteLine(petName + "'s Status: \n - Hunger: " + petHunger + "\n - Happiness: " + petHappiness + "\n - Health: " + petHealth + "\n ");
                         break;
 
                     case 4:
-                        Console.WriteLine(petName + "'s Status: \n - Hunger: " + petHunger + "\n - Happiness: " + petHappiness + "\n - Health: " + petHealth);
-                        Console.Write("\n");
+
+                        Console.WriteLine(petName + "'s Status: \n - Hunger: " + petHunger + "\n - Happiness: " + petHappiness + "\n - Health: " + petHealth + "\n ");
                         break;
 
                     case 5:
+
                         Console.WriteLine("Thank you for playing with " + petName + ".Goodbye! ");
                         return;
                     default:
@@ -164,16 +135,11 @@ namespace CSharpTutorials
 
                 }
 
-                if (petHunger < 1 || petHealth < 1 || petHappiness < 1 || petHunger > 10 || petHealth > 10 || petHappiness > 10)
-                {
-                    petHunger = (petHunger > 10) ? 10 : petHunger;
-                    petHappiness = (petHappiness > 10) ? 10 : petHappiness;
-                    petHealth = (petHealth > 10) ? 10 : petHealth;
-
-                    petHunger = (petHunger < 1) ? 1 : petHunger;
-                    petHappiness = (petHappiness < 1) ? 1 : petHappiness;
-                    petHealth = (petHealth < 1) ? 1 : petHealth;
-                }
+                petHunger = Math.Min(10, petHunger += 1);
+                petHappiness = Math.Max(1, petHappiness -= 1);
+                Console.WriteLine("One hour has passed!!  ");
+                Console.WriteLine(petName + "'s Status: \n - Hunger: " + petHunger + "\n - Happiness: " + petHappiness + "\n - Health: " + petHealth+"\n");
+                
 
             } while (activityWithPet != 5);
 
